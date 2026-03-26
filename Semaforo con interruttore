@@ -1,0 +1,43 @@
+int led1 = 11; 
+int led2 = 10;
+int led3 = 9;
+
+int button = 4;
+
+void setup() {
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+
+  pinMode(button, INPUT_PULLUP); // pull-up interno attivato
+}
+
+void loop() {
+
+  if (digitalRead(button) == LOW) { // pulsante premuto
+
+    // LED 1
+    digitalWrite(led1, HIGH);
+    delay(2000);
+    digitalWrite(led1, LOW);
+    if (digitalRead(button) == HIGH) return; // stop tra LED
+
+    // LED 2
+    digitalWrite(led2, HIGH);
+    delay(2000);
+    digitalWrite(led2, LOW);
+    if (digitalRead(button) == HIGH) return;
+
+    // LED 3
+    digitalWrite(led3, HIGH);
+    delay(2000);
+    digitalWrite(led3, LOW);
+    if (digitalRead(button) == HIGH) return;
+
+  } else {
+    // pulsante rilasciato → tutti LED spenti
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+    digitalWrite(led3, LOW);
+  }
+}
